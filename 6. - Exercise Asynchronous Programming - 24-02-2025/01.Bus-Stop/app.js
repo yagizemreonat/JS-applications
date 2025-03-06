@@ -5,7 +5,7 @@ async function getInfo() {
 
     const stopId = stopIdInputEl.value;
 
-    try {        
+    try {
         const stopResponse = await fetch(`http://localhost:3030/jsonstore/bus/businfo/${stopId}`);
         const stopData = await stopResponse.json();
 
@@ -16,12 +16,14 @@ async function getInfo() {
 
         busesUlEl.innerHTML = '';
 
+        // busesEntries.sort((a, b) => a[1] - b[1]);
+
         for (const [busId, time] of busesEntries) {
             const busLiEl = document.createElement('li');
             busLiEl.textContent = `Bus ${busId} arrives in ${time} minutes`;
             busesUlEl.appendChild(busLiEl);
         }
-    } catch (error) {
+    } catch (err) {
         busesUlEl.innerHTML = '';
         stopNameDivEl.textContent = 'Error';
     }
