@@ -6,3 +6,4 @@ export const towns = [
     'Dolna Bania',
     'Gorna Bania'
 ];
+
